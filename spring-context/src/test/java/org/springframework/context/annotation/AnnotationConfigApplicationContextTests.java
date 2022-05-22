@@ -16,11 +16,7 @@
 
 package org.springframework.context.annotation;
 
-import java.util.Map;
-import java.util.regex.Pattern;
-
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +28,9 @@ import org.springframework.context.annotation6.ConfigForScanning;
 import org.springframework.context.annotation6.Jsr330NamedForScanning;
 import org.springframework.core.ResolvableType;
 import org.springframework.util.ObjectUtils;
+
+import java.util.Map;
+import java.util.regex.Pattern;
 
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -81,6 +80,7 @@ class AnnotationConfigApplicationContextTests {
 		context.getBean("name");
 		Map<String, Object> beans = context.getBeansWithAnnotation(Configuration.class);
 		assertThat(beans).hasSize(2);
+		System.out.println("\"成功\" = " + "成功");
 	}
 
 	@Test

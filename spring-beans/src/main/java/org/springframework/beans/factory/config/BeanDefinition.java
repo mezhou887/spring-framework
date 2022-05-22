@@ -88,6 +88,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	/**
 	 * Set the name of the parent definition of this bean definition, if any.
 	 */
+	// 设置父 Bean 继承父 Bean 的配置信息而已
 	void setParentName(@Nullable String parentName);
 
 	/**
@@ -104,6 +105,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * @see #setFactoryBeanName
 	 * @see #setFactoryMethodName
 	 */
+	// 设置 Bean 的类名称，将来是要通过反射来生成实例的
 	void setBeanClassName(@Nullable String beanClassName);
 
 	/**
@@ -118,6 +120,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * @see #getFactoryBeanName()
 	 * @see #getFactoryMethodName()
 	 */
+	// 获取 Bean 的类名称
 	@Nullable
 	String getBeanClassName();
 
@@ -126,6 +129,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * @see #SCOPE_SINGLETON
 	 * @see #SCOPE_PROTOTYPE
 	 */
+	// 设置 bean 的 scope
 	void setScope(@Nullable String scope);
 
 	/**
@@ -140,6 +144,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * <p>If {@code false}, the bean will get instantiated on startup by bean
 	 * factories that perform eager initialization of singletons.
 	 */
+	// 设置是否懒加载
 	void setLazyInit(boolean lazyInit);
 
 	/**
@@ -157,6 +162,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	/**
 	 * Return the bean names that this bean depends on.
 	 */
+	// 返回该 Bean 的所有依赖
 	@Nullable
 	String[] getDependsOn();
 

@@ -16,12 +16,12 @@
 
 package org.springframework.beans.factory.config;
 
-import java.util.Iterator;
-
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.lang.Nullable;
+
+import java.util.Iterator;
 
 /**
  * Configuration interface to be implemented by most listable bean factories.
@@ -47,6 +47,7 @@ public interface ConfigurableListableBeanFactory
 	 * for example, String. Default is none.
 	 * @param type the dependency type to ignore
 	 */
+	//忽略自动注册的依赖关系。
 	void ignoreDependencyType(Class<?> type);
 
 	/**
@@ -60,6 +61,7 @@ public interface ConfigurableListableBeanFactory
 	 * @see org.springframework.beans.factory.BeanFactoryAware
 	 * @see org.springframework.context.ApplicationContextAware
 	 */
+	//忽略自动注册的依赖接口
 	void ignoreDependencyInterface(Class<?> ifc);
 
 	/**
@@ -106,6 +108,7 @@ public interface ConfigurableListableBeanFactory
 	 * @throws NoSuchBeanDefinitionException if there is no bean with the given name
 	 * defined in this factory
 	 */
+	//获取beanDefinition
 	BeanDefinition getBeanDefinition(String beanName) throws NoSuchBeanDefinitionException;
 
 	/**
@@ -120,6 +123,7 @@ public interface ConfigurableListableBeanFactory
 	 * @see #getBeanNamesForType
 	 * @see #getBeanNamesForAnnotation
 	 */
+	//迭代beanNames
 	Iterator<String> getBeanNamesIterator();
 
 	/**
@@ -132,6 +136,7 @@ public interface ConfigurableListableBeanFactory
 	 * @see #getBeanDefinition
 	 * @see #getMergedBeanDefinition
 	 */
+	//清除元数据缓存
 	void clearMetadataCache();
 
 	/**
@@ -146,6 +151,7 @@ public interface ConfigurableListableBeanFactory
 	 * i.e. are not supposed to be modified or post-processed any further.
 	 * @return {@code true} if the factory's configuration is considered frozen
 	 */
+	//锁定配置信息.在调用refresh时会使用到.
 	boolean isConfigurationFrozen();
 
 	/**
@@ -157,6 +163,7 @@ public interface ConfigurableListableBeanFactory
 	 * Call {@link #destroySingletons()} for full cleanup in this case.
 	 * @see #destroySingletons()
 	 */
+	//预实例化非懒加载单例，用于解决循环依赖问题
 	void preInstantiateSingletons() throws BeansException;
 
 }
